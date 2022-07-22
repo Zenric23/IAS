@@ -14,7 +14,6 @@ if(isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
 </head>
 <body>
     <div class="container">
@@ -31,7 +30,7 @@ if(isset($_GET['id'])) {
             <input type="hidden" name="id" value="<?php echo $id ?>">
             <div class="d-flex justify-content-end">
                 <a href="/IAS/subject/subjectIndex.php"  class="btn btn-secondary me-2" >Close</a>
-                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="submit" class="btn btn-primary">Update</button>
             </div>
         </form>
     </div>
