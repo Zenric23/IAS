@@ -10,8 +10,11 @@
     if(isset($school_year)) {
         $query = "INSERT INTO stud_course (idstudent, idsy, idcourse, year_level, status)
         VALUES ($student_id, $school_year, $course, '$year_level', '$status');";
-
         mysqli_query($mycon, $query);
-        // header("location: /IAS/admin/dashboard.php");
+
+        $query = "UPDATE student SET status = '1' where idstudent = $student_id";
+        mysqli_query($mycon, $query);
+
+        header("location: enrollmentIndex.php");
     }
 ?>

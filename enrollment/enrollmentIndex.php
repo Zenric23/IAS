@@ -6,10 +6,14 @@ $query = "SELECT * FROM student";
 $result = mysqli_query($mycon, $query);
 
 
-if(isset($_GET['delete'])) {
-    $id = $_GET['delete'];
-    $query = "DELETE FROM student WHERE idstudent = $id;";
+if(isset($_GET['drop'])) {
+    $id = $_GET['drop'];
+    $query = "DELETE FROM student_enroll_class WHERE idstudent = $id;";
     mysqli_query($mycon, $query);   
+
+    $query = "UPDATE student SET status = '0' WHERE idstudent = $id;";
+    mysqli_query($mycon, $query);   
+
  }
 
 ?>
@@ -36,6 +40,7 @@ if(isset($_GET['delete'])) {
                     <th scope="col">first_name</th>
                     <th scope="col">last_name</th>
                     <th scope="col">gender</th>
+                    <th scope="col">status</th>
                     <th scope="col">action</th>
                 </tr>
             </thead>
@@ -48,7 +53,20 @@ if(isset($_GET['delete'])) {
                             $idstudent = $row[0];
                             $last_name = $row[1];
                             $first_name = $row[2];
-                            $gender = $row[3];
+                            $gender = $row[4];
+                            $status = $row[9];
+
+                            $studentStatus = $status === '1' ? 'enrolled' : 'not enrolled';
+                            
+                            $btns = $status === '0'
+                                ? "<td><a href='select_class_course.php?student_id=$idstudent' class='btn btn-primary'>Enroll now</a></td>"
+                                : "<td>
+                                    <a href='student_grades.php?student_id=$idstudent' class='btn btn-secondary'>Grades</a>
+                                    <a href='enrollmentIndex.php?drop=$idstudent' class='btn btn-danger'>drop</a>
+                                    </td>";
+
+
+
                             echo 
                             "
                                 <tr>
@@ -65,8 +83,9 @@ if(isset($_GET['delete'])) {
                                         $gender
                                     </td>
                                     <td> 
-                                        <a  href='pickCourse.php?id=$idstudent' class='btn btn-primary'>Proceed</button>
+                                        $studentStatus
                                     </td>
+                                    $btns                                   
                                 </tr>
                             ";
                             

@@ -1,6 +1,6 @@
 <?php	
 	$hostname_mysql_connection = "localhost";
-	$database_mysql_connection = "student_registration";
+	$database_mysql_connection = "stud_reg";
 	$username_mysql_connection = "root";
     $port_mysql_connection = "3307";
 	$password_mysql_connection = "";
