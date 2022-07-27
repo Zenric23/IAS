@@ -37,7 +37,9 @@ $allSchoolYear = mysqli_query($mycon, $query);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
+    
     <div class="container my-5 p-5 rounded" style="background: rgba(0,0,0,0.1)">
+    <a href="enrollmentIndex.php">back</a>
         <?php
          while($row = mysqli_fetch_row($student)) {
             $last_name = $row[2];
@@ -197,6 +199,7 @@ $allSchoolYear = mysqli_query($mycon, $query);
 
                     if(totalUnits > 31) {
                         submitBtn.setAttribute('disabled', true)
+                        alert('Units should not above 31')
                     } else {
                         submitBtn.removeAttribute('disabled')
                     }

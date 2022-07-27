@@ -2,15 +2,9 @@
 session_start();
 require_once('../connection.php');
 
-
-$query = "SELECT * FROM subject";
+$query = "SELECT * FROM logs";
 $result = mysqli_query($mycon, $query);
 
-if(isset($_GET['delete'])) {
-    $id = $_GET['delete'];
-    $query = "DELETE FROM subject WHERE idsubject = $id;";
-    mysqli_query($mycon, $query);   
- }
 
 ?>
 
@@ -27,19 +21,14 @@ if(isset($_GET['delete'])) {
     <?php require('../navigation.php'); ?>
 
     <div class="container mt-5">
-        <div class="d-flex justify-content-between mb-4">
-            <h4>Subject</h4>
-            <a href='addUI.php' class="btn btn-success px-4">
-                Add
-            </a>
-        </div>
+        <h4 class="mb-4">Logs</h4>
         <table class="table text-center">
             <thead class="table-dark">
                 <tr>
-                    <th scope="col">idsubject</th>
-                    <th scope="col">subject_name</th>
-                    <th scope="col">units</th>
-                    <th scope="col">action</th>
+                    <th scope="col">user_Id</th>
+                    <th scope="col">transaction</th>
+                    <th scope="col">date and time</th>
+                    <th scope="col">ip address</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,25 +37,25 @@ if(isset($_GET['delete'])) {
 
                         while($row = mysqli_fetch_row($result)) {
 
-                            $subjectNum = $row[0];
-                            $subjectName = $row[1];
-                            $units = $row[2];
+                            $user_id = $row[0];
+                            $transaction = $row[1];
+                            $date = $row[2];
+                            $ip_address = $row[3];
 
                             echo 
                             "
                                 <tr>
                                     <td>
-                                        $subjectNum
+                                        $user_id
                                     </td>
                                     <td> 
-                                        $subjectName
+                                        $transaction
                                     </td>
                                     <td> 
-                                        $units
+                                        $date
                                     </td>
-                                    <td>
-                                        <a href='updateUI.php?id=$subjectNum&subjectName=$subjectName&units=$units' class='btn btn-primary'>Update</a>
-                                        <a href='subjectIndex.php?delete=$subjectNum' class='btn btn-danger'>Delete</a>
+                                    <td> 
+                                        $ip_address
                                     </td>
                                 </tr>
                             ";

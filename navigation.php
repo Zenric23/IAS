@@ -2,7 +2,8 @@
 <nav class="navbar bg-light navbar-expand-lg">
     <div class="container">
         <a class="navbar-brand"><?php echo $_SESSION['username']; ?></a>
-        <div class="d-flex">
+        <div class="d-flex align-items-center">
+        <a class="me-5" href="../log/logIndex.php">Logs</a>
         <div class="collapse navbar-collapse me-4" id="navbarNavDarkDropdown">
         <ul class="navbar-nav">
             <li class="nav-item dropdown">

@@ -9,7 +9,11 @@ $result = mysqli_query($mycon, $query);
 if(isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $query = "DELETE FROM student WHERE idstudent = $id;";
-    mysqli_query($mycon, $query);   
+    mysqli_query($mycon, $query);  
+    $query = "DELETE FROM stud_course WHERE idstudent = $id;";
+    mysqli_query($mycon, $query); 
+    $query = "DELETE FROM student_enroll_class WHERE idstudent = $id;";
+    mysqli_query($mycon, $query);
  }
 
 ?>
@@ -38,7 +42,7 @@ if(isset($_GET['delete'])) {
             <thead class="table-dark">
                 <tr>
                     <th scope="col">student id</th>
-                    <th scope="col">firts_name</th>
+                    <th scope="col">first_name</th>
                     <th scope="col">last_name</th>
                     <th scope="col">gender</th>
                     <th scope="col">DOB</th>
@@ -57,11 +61,11 @@ if(isset($_GET['delete'])) {
                             $idstudent = $row[0];
                             $last_name = $row[1];
                             $first_name = $row[2];
-                            $gender = $row[3];
-                            $DOB = $row[4];
-                            $parentName = $row[5];
-                            $address = $row[6];
-                            $contact = $row[7];
+                            $gender = $row[4];
+                            $DOB = $row[5];
+                            $parentName = $row[6];
+                            $address = $row[7];
+                            $contact = $row[8];
 
                             echo 
                             "

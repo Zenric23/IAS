@@ -1,5 +1,11 @@
 <?php
     require("../connection.php");
+    session_start();
+
+    $user_id = $_SESSION['userNum'];
+
+    $date = date('d-m-y h:i:s');
+    $localIP = getHostByName(getHostName());
 
     $school_year = $_POST['school_year'];
     $course = $_POST['course'];
@@ -13,6 +19,10 @@
         mysqli_query($mycon, $query);
 
         $query = "UPDATE student SET status = '1' where idstudent = $student_id";
+        mysqli_query($mycon, $query);
+
+        $query = "INSERT INTO logs (userid, transaction, data_and_time, ip_address)
+        VALUES ($user_id, 'Enroll student', '$date', '$localIP')";
         mysqli_query($mycon, $query);
 
         header("location: enrollmentIndex.php");

@@ -1,5 +1,12 @@
 <?php
 require_once('../connection.php');
+session_start();
+
+$user_id = $_SESSION['userNum'];
+
+$date = date('d-m-y h:i:s');
+$localIP = getHostByName(getHostName());
+
 
 
 $day = $_POST['day'];
@@ -18,7 +25,11 @@ if(isset($_POST['day'])) {
 
         if(mysqli_query($mycon, $query)) {
 
-            header("location: classForm.php?status=added");
+            $query = "INSERT INTO logs (userid, transaction, data_and_time, ip_address)
+            VALUES ($user_id, 'Added Class', '$date', '$localIP')";
+            mysqli_query($mycon, $query);
+
+            header("location: ../enrollment/enrollmentIndex.php");
         } else {
 
             header("location: classForm.php?status=failed");

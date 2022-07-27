@@ -9,7 +9,9 @@ $result = mysqli_query($mycon, $query);
 if(isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $query = "DELETE FROM teacher WHERE idteacher = $id;";
-    mysqli_query($mycon, $query);   
+    mysqli_query($mycon, $query); 
+    $query = "DELETE FROM class_offering WHERE idteacher = $id;";
+    mysqli_query($mycon, $query);  
  }
 
 ?>

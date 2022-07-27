@@ -5,7 +5,6 @@ require_once('../connection.php');
 $query = "SELECT * FROM student";
 $result = mysqli_query($mycon, $query);
 
-
 if(isset($_GET['drop'])) {
     $id = $_GET['drop'];
     $query = "DELETE FROM student_enroll_class WHERE idstudent = $id;";
