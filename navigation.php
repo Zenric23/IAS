@@ -25,6 +25,9 @@
                 <li>
                     <a class="dropdown-item" href="/IAS/teacher/teacherIndex.php">Teacher</a>
                 </li>
+                <li>
+                    <a class="dropdown-item" href="/IAS/class/classForm.php">Class</a>
+                </li>
             </ul>
             </li>
         </ul>

@@ -65,7 +65,7 @@ if(isset($_GET['delete'])) {
                                         $gender
                                     </td>
                                     <td> 
-                                        <a  href='enrollUI.php?id=$idstudent' class='btn btn-primary'>Enroll</button>
+                                        <a  href='pickCourse.php?id=$idstudent' class='btn btn-primary'>Proceed</button>
                                     </td>
                                 </tr>
                             ";
