@@ -22,7 +22,7 @@ $allSchoolYear = mysqli_query($mycon, $query);
 </head>
 <body>
     <div class="container">
-        <form method="post" class="col-5 mx-auto mt-5 p-4 border" action="update.php">
+        <form method="post" class="col-5 mx-auto mt-5 p-4 border" action="handleCourse.php">
             <h3 class="mb-4">Select Course</h3>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">School Year</label>
@@ -71,9 +71,10 @@ $allSchoolYear = mysqli_query($mycon, $query);
                 </select>
             </div>
             <input type="hidden" name="status" value="1">
+            <input type="hidden" name="student_id" value=<?php echo $_GET['id']; ?>>
             <div class="d-flex justify-content-end">
-                <a href="/IAS/admin/dashboard.php"  class="btn btn-secondary me-2" >Close</a>
-                <button type="submit" id="usernum" class="btn btn-primary">Add</button>
+                <a href="enrollmentIndex.php"  class="btn btn-secondary me-2" >Close</a>
+                <button type="submit" id="usernum" class="btn btn-primary">Submit</button>
             </div>
         </form>
     </div>
