@@ -39,7 +39,7 @@ $allSchoolYear = mysqli_query($mycon, $query);
                     ";
                     
                 }
-                    ?>
+                ?>
                  </select>
             </div>
             <div class="mb-3">
